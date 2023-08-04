@@ -25,6 +25,13 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
 
   @override
   Widget build(BuildContext context) {
+    List carsImages = [
+      'assets/images/cars/Dodge Challenger SRT Hellcat 2015.png',
+      'assets/images/cars/Dodge_Challenger_Chrysler_2017.png',
+      'assets/images/cars/Mercedes-Benz SLS AMG.png',
+      'assets/images/cars/red Mercedes-Benz sedan.png',
+      'assets/images/cars/silver Dodge Challenger coupe.png',
+    ];
     var _MdQuerry = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey[300],
@@ -104,7 +111,7 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
         children: [
           Container(
             height: 350,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(30),
@@ -150,7 +157,7 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
                       child: Container(
                         width: 12.0,
                         height: 12.0,
-                        margin: EdgeInsets.symmetric(
+                        margin: const EdgeInsets.symmetric(
                             vertical: 8.0, horizontal: 4.0),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
@@ -171,7 +178,7 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
+                        const Column(
                           //_____textBelowlSlider
                           children: [
                             Text(
@@ -184,7 +191,7 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
                         ),
                         TextButton(
                             onPressed: () {},
-                            child: Row(
+                            child: const Row(
                               children: [
                                 Text('My Garage '),
                                 Icon(Icons.arrow_right_alt_outlined)
@@ -198,8 +205,8 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
             ),
             // child: CarouselWithIndicatorDemo(),
           ),
+          //_____AvailableCarsContainer
           Container(
-            //_____AvailableCarsContainer
             margin: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
             decoration: BoxDecoration(
@@ -209,7 +216,7 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
+                const Column(
                   children: [
                     Text(
                       'Available Cars',
@@ -245,11 +252,11 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
               ],
             ),
           ),
+
+          //_____TopDeals
           Padding(
-            //_____TopDeals
             padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10),
             child: Row(
-
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -276,19 +283,72 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
               ],
             ),
           ),
-         // Shobi how should i add a vertical scrollview here ? im not able to add a list.builder inside a listView
-          ListView.builder(
-            itemBuilder: (context, index) {
-            return carCard();
-          },)
+          //  how should i add a vertical scrollview here ? im not able to add a list.builder inside a listView
+          //  Container(
+          //    height: 100,
+          //    child: SingleChildScrollView(
+          //      scrollDirection: Axis.horizontal,
+          //      child: ListView.builder(itemCount: 3,
+          //        //inner listview.builder
+          //        itemBuilder: (context, index) {
+          //        return carCard();
+          //      },),
+          //    ),
+          //  )
+
+          //_____ParentContainer for Car Cards below top deals
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12),
+          //   child: Row(
+          //     children: [
+          //       ListView.builder(
+          //         itemCount: 4,
+          //         itemBuilder: (BuildContext context, int index) {
+          //           return Container(
+          //             width: 150,
+          //             padding:
+          //                 EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          //             decoration: BoxDecoration(
+          //               borderRadius: BorderRadius.circular(10),
+          //               color: Colors.white,
+          //             ),
+          //             child: Column(
+          //               children: [
+          //                 //_____Weekly Button
+          //                 Align(
+          //                   alignment: Alignment.topRight,
+          //                   child: TextButton(
+          //                     onPressed: () {},
+          //                     child: Container(
+          //                       padding: EdgeInsets.all(4.0),
+          //                       decoration: BoxDecoration(
+          //                         borderRadius: BorderRadius.circular(10),
+          //                         color: Colors.grey[300],
+          //                       ),
+          //                       child: Text(
+          //                         'Weekly',
+          //                         style: TextStyle(fontSize: 12),
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ),
+          //                 //_____CarImage
+          //                 // Container(
+          //                 //     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+          //                 //     child: Image.asset(carsImages[index])),
+          //               ],
+          //             ),
+          //           );
+          //         },
+          //       )
+          //     ],
+          //   ),
+          // ),
+
         ],
       ),
-    );
-  }
-
-  Widget carCard() {
-    return Container(
-      decoration: BoxDecoration(shape: BoxShape.circle),
+      
+      
     );
   }
 }
