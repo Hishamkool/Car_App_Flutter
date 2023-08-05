@@ -1,8 +1,9 @@
+import 'package:car_app/ProductPage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'dependencies/carousalSliderIndicator.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
 import 'dependencies/carousel_slider.dart';
 
 void main() {
@@ -20,19 +21,34 @@ class CarBuyHometest extends StatefulWidget {
 }
 
 class _CarBuyHometestState extends State<CarBuyHometest> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Likes',
+      style: optionStyle,
+    ),
+    Text(
+      'Search',
+      style: optionStyle,
+    ),
+    Text(
+      'Profile',
+      style: optionStyle,
+    ),
+  ];
   int _current = 0;
   final CarouselController _controller = CarouselController();
 
   @override
   Widget build(BuildContext context) {
-    List carsImages = [
-      'assets/images/cars/Dodge Challenger SRT Hellcat 2015.png',
-      'assets/images/cars/Dodge_Challenger_Chrysler_2017.png',
-      'assets/images/cars/Mercedes-Benz SLS AMG.png',
-      'assets/images/cars/red Mercedes-Benz sedan.png',
-      'assets/images/cars/silver Dodge Challenger coupe.png',
-    ];
     var _MdQuerry = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -116,20 +132,7 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(30),
                     bottomRight: Radius.circular(30))),
-            // child: CarouselSlider(
-            //   items: [
-            //
-            //   ],
-            //   options: CarouselOptions(
-            //       autoPlay: true,
-            //       enlargeCenterPage: true,
-            //       aspectRatio: 2.0,
-            //       onPageChanged: (index, reason) {
-            //         setState(() {
-            //           _current = index;
-            //         });
-            //       }),
-            // ),
+
             child: Column(
               //_________imageSlider
               children: [
@@ -205,6 +208,7 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
             ),
             // child: CarouselWithIndicatorDemo(),
           ),
+
           //_____AvailableCarsContainer
           Container(
             margin: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
@@ -240,7 +244,9 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => CarProductPage(),));
+                      },
                       splashColor: Colors.white,
                       icon: Icon(
                         Icons.chevron_right,
@@ -254,13 +260,319 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
           ),
 
           //_____TopDeals
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 18, vertical: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'TOP DEALS',
+                  style: TextStyle(fontSize: 25, color: Colors.grey[600]),
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => CarProductPage(),));
+                    },
+                    child: Row(
+                      //_____More
+                      children: [
+                        Text(
+                          'More',
+                          style: TextStyle(fontSize: 16, color: Colors.blue),
+                        ),
+                        SizedBox(width: 10),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          size: 16,
+                          color: Colors.blue,
+                        )
+                      ],
+                    ))
+              ],
+            ),
+          ),
+
+          //_____Car Cards below top deals
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: _MdQuerry.width / 2.5,
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      //_____Weekly Button
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Container(
+                            padding: EdgeInsets.all(4.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.grey[300],
+                            ),
+                            child: Text(
+                              'Weekly',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+
+                      // _____CarImage
+                      Image.asset(
+                        'assets/images/cars/Dodge Challenger SRT Hellcat 2015.png',
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'SRT Hellcat',
+                              style: TextStyle(fontSize: 17),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Dodge ',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text('per week')
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: _MdQuerry.width / 2.5,
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      //_____Weekly Button
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Container(
+                            padding: EdgeInsets.all(4.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.grey[300],
+                            ),
+                            child: Text(
+                              'Monthly',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+
+                      // _____CarImage
+                      Image.asset(
+                        'assets/images/cars/silver Dodge Challenger coupe.png',
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Challenger',
+                              style: TextStyle(fontSize: 17),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Dodge ',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text('per month')
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: _MdQuerry.width / 2.5,
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      //_____Weekly Button
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Container(
+                            padding: EdgeInsets.all(4.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.grey[300],
+                            ),
+                            child: Text(
+                              'Weekly',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+
+                      // _____CarImage
+                      Image.asset(
+                        'assets/images/cars/Mercedes-Benz SLS AMG.png',
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'SLS AMG',
+                              style: TextStyle(fontSize: 17),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Mercedes-Benz',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text('per week')
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: _MdQuerry.width / 2.5,
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      //_____Weekly Button
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Container(
+                            padding: EdgeInsets.all(4.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.grey[300],
+                            ),
+                            child: Text(
+                              'Weekly',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+
+                      // _____CarImage
+                      Image.asset(
+                        'assets/images/cars/red Mercedes-Benz sedan.png',
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'S-Class',
+                              style: TextStyle(fontSize: 17),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Mercedes-Benz',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text('per week')
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          //____TOP DEALERS
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 18, vertical: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'TOP DEALERS',
                   style: TextStyle(fontSize: 25, color: Colors.grey[600]),
                 ),
                 TextButton(
@@ -283,72 +595,132 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
               ],
             ),
           ),
-          //  how should i add a vertical scrollview here ? im not able to add a list.builder inside a listView
-          //  Container(
-          //    height: 100,
-          //    child: SingleChildScrollView(
-          //      scrollDirection: Axis.horizontal,
-          //      child: ListView.builder(itemCount: 3,
-          //        //inner listview.builder
-          //        itemBuilder: (context, index) {
-          //        return carCard();
-          //      },),
-          //    ),
-          //  )
 
-          //_____ParentContainer for Car Cards below top deals
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12),
-          //   child: Row(
-          //     children: [
-          //       ListView.builder(
-          //         itemCount: 4,
-          //         itemBuilder: (BuildContext context, int index) {
-          //           return Container(
-          //             width: 150,
-          //             padding:
-          //                 EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          //             decoration: BoxDecoration(
-          //               borderRadius: BorderRadius.circular(10),
-          //               color: Colors.white,
-          //             ),
-          //             child: Column(
-          //               children: [
-          //                 //_____Weekly Button
-          //                 Align(
-          //                   alignment: Alignment.topRight,
-          //                   child: TextButton(
-          //                     onPressed: () {},
-          //                     child: Container(
-          //                       padding: EdgeInsets.all(4.0),
-          //                       decoration: BoxDecoration(
-          //                         borderRadius: BorderRadius.circular(10),
-          //                         color: Colors.grey[300],
-          //                       ),
-          //                       child: Text(
-          //                         'Weekly',
-          //                         style: TextStyle(fontSize: 12),
-          //                       ),
-          //                     ),
-          //                   ),
-          //                 ),
-          //                 //_____CarImage
-          //                 // Container(
-          //                 //     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-          //                 //     child: Image.asset(carsImages[index])),
-          //               ],
-          //             ),
-          //           );
-          //         },
-          //       )
-          //     ],
-          //   ),
-          // ),
-
+          //____Containers below top delears
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  width: _MdQuerry.width / 4,
+                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                          vertical: 10,
+                        ),
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                'assets/images/Delears/hertz.png',
+                              ),
+                            )),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text('Hertz'),
+                      Text("177 offices"),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: _MdQuerry.width / 4,
+                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: 10,
+                          ),
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/images/Delears/avis.png',
+                                ),
+                              )),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text('Avis'),
+                        Text("198 offices"),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
-      
-      
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 20,
+              color: Colors.black.withOpacity(.1),
+            )
+          ],
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+            child: GNav(
+              rippleColor: Colors.grey[300]!,
+              hoverColor: Colors.grey[100]!,
+              gap: 8,
+              activeColor: Colors.black,
+              iconSize: 24,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              duration: Duration(milliseconds: 400),
+              tabBackgroundColor: Colors.grey[100]!,
+              color: Colors.black,
+              tabs: [
+                GButton(
+                  icon: LineIcons.home,
+                  text: 'Home',
+                ),
+                GButton(
+                  icon: LineIcons.search,
+                  text: 'Search',
+                ),
+                GButton(
+                  icon: Icons.notifications_active_outlined,
+                  text: 'Notification',
+                ),
+                GButton(
+                  icon: LineIcons.user,
+                  text: 'Profile',
+                ),
+              ],
+              selectedIndex: _selectedIndex,
+              onTabChange: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
