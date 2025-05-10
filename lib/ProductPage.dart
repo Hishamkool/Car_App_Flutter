@@ -1,3 +1,5 @@
+// import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,7 @@ class CarProductPage extends StatefulWidget {
 class _CarProductPageState extends State<CarProductPage> {
   int _current = 0;
 
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,24 +34,31 @@ class _CarProductPageState extends State<CarProductPage> {
         backgroundColor: Colors.white,
         toolbarHeight: 60,
         elevation: 0,
-        leading: Container(
-          margin: EdgeInsets.all(10),
-          width: 40,
-          height: 40,
-          decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              // boxShadow: [BoxShadow( color: Colors.black,blurRadius: 2),],
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.black, width: 2)),
-          child: IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => CarBuyHometest(),));
-            },
-            splashColor: Colors.white,
-            icon: Icon(
-              Icons.chevron_left,
-              color: Colors.black,
+        leadingWidth: 50,
+        leading: Center(
+          child: Container(
+            margin: const EdgeInsets.only(left: 10),
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+
+                // boxShadow: [BoxShadow( color: Colors.black,blurRadius: 2),],
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.blueGrey.shade100, width: 1)),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CarBuyHometest(),
+                    ));
+              },
+              splashColor: Colors.white24,
+              icon: const Icon(
+                Icons.keyboard_arrow_left,
+                color: Colors.black,
+              ),
             ),
           ),
         ),
@@ -61,16 +70,18 @@ class _CarProductPageState extends State<CarProductPage> {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
                   color: Colors.blue,
+                  shape: BoxShape.rectangle,
+                  border: Border.all(color: Colors.blueGrey.shade100, width: 1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
                   child: IconButton(
                     onPressed: () {},
                     splashColor: Colors.white,
-                    icon: Icon(
-                      LineIcons.umbrella,
+                    icon: const Icon(
+                      LineIcons.bookmark,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -82,9 +93,10 @@ class _CarProductPageState extends State<CarProductPage> {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                    border: Border.all(width: 1),
                     shape: BoxShape.rectangle,
-                    color: Colors.white,
+                    
+                    border:
+                        Border.all(color: Colors.blueGrey.shade100, width: 1),
                     borderRadius: BorderRadius.circular(10)),
                 child: Center(
                   child: IconButton(
@@ -173,23 +185,55 @@ class _CarProductPageState extends State<CarProductPage> {
                           width: _MdQuerry.width / 3.5,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: Colors.blue,
+                            color: Colors.blue.shade800,
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
-                                child: Text("12 Month"),
+                                child: Text(
+                                  "12 Month",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                               SizedBox(
                                 height: 20,
                               ),
                               Text(
-                                "4.35jt",
-                                style: TextStyle(fontSize: 22),
+                                "4.35 k",
+                                style: TextStyle(
+                                    fontSize: 22, color: Colors.white),
                               ),
-                              Text("IDR")
+                              Text("INR", style: TextStyle(color: Colors.white))
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 25),
+                          width: _MdQuerry.width / 3.5,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                              border: Border.all(width: 1, color: Colors.grey)),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(top: 8.0),
+                                child: Text("6 Month"),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              FittedBox(
+                                child: Text(
+                                  "6.93 k",
+                                  style: TextStyle(fontSize: 22),
+                                ),
+                              ),
+                              Text("INR")
                             ],
                           ),
                         ),
@@ -206,42 +250,16 @@ class _CarProductPageState extends State<CarProductPage> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
-                                child: Text("12 Month"),
+                                child: Text("1 Month"),
                               ),
                               SizedBox(
                                 height: 20,
                               ),
                               Text(
-                                "4.35jt",
+                                "35 k",
                                 style: TextStyle(fontSize: 22),
                               ),
-                              Text("IDR")
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 25),
-                          width: _MdQuerry.width / 3.5,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Colors.white,
-                              border: Border.all(width: 1, color: Colors.grey)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Text("12 Month"),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Text(
-                                "4.35jt",
-                                style: TextStyle(fontSize: 22),
-                              ),
-                              Text("IDR")
+                              Text("INR")
                             ],
                           ),
                         ),
@@ -271,14 +289,15 @@ class _CarProductPageState extends State<CarProductPage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                  padding: const EdgeInsets.only(left: 10, top: 5),
                   width: _MdQuerry.width / 3.5,
+                  height: 90,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.white,
                       border: Border.all(width: 1, color: Colors.grey)),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
@@ -296,14 +315,15 @@ class _CarProductPageState extends State<CarProductPage> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                  height: 90,
+                  padding: const EdgeInsets.only(left: 10, top: 5),
                   width: _MdQuerry.width / 3.5,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: Colors.white,
                       border: Border.all(width: 1, color: Colors.grey)),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
@@ -312,16 +332,19 @@ class _CarProductPageState extends State<CarProductPage> {
                       SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Automatic",
-                        style: TextStyle(
-                            fontSize: 19, fontWeight: FontWeight.bold),
+                      FittedBox(
+                        child: Text(
+                          "Automatic",
+                          style: TextStyle(
+                              fontSize: 19, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ],
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                  height: 90,
+                  padding: const EdgeInsets.only(left: 10, top: 5),
                   width: _MdQuerry.width / 3.5,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
@@ -329,6 +352,7 @@ class _CarProductPageState extends State<CarProductPage> {
                       border: Border.all(width: 1, color: Colors.grey)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),

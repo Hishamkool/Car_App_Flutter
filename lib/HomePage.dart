@@ -1,21 +1,11 @@
 import 'package:car_app/ProductPage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'dependencies/carousel_slider.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: CarBuyHometest(),
-    debugShowCheckedModeBanner: false,
-  ));
-}
-
 class CarBuyHometest extends StatefulWidget {
-  final CarouselController _controller = CarouselController();
-
   @override
   State<CarBuyHometest> createState() => _CarBuyHometestState();
 }
@@ -43,38 +33,36 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
     ),
   ];
   int _current = 0;
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
     var _MdQuerry = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 100,
         elevation: 0,
-        leading: Container(
-          // Profile_image
-          padding: EdgeInsets.all(3.0),
-          height: 60,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: Colors.yellow,
-              width: 2,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: CircleAvatar(
+            backgroundColor: Colors.amber.shade100,
+            // Profile_image
+            child: Container(
+              margin: const EdgeInsets.all(3.0),
+              decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/profile_carjpeg.jpeg'),
+                  )),
             ),
-          ),
-          child: Container(
-            padding: EdgeInsets.all(10.0),
-            decoration: BoxDecoration(
-                color: Colors.blue,
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                    image: AssetImage('assets/images/profile_carjpeg.jpeg'))),
+            /* Placeholder(child: Text("data"),), */
           ),
         ),
+        leadingWidth: 75,
         actions: [
           Row(
             //items_appBar
@@ -83,10 +71,10 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                        text: "IDR",
+                        text: "INR ",
                         style: TextStyle(fontSize: 14, color: Colors.grey)),
                     TextSpan(
-                        text: '17.7jt',
+                        text: '70.2 Lkh',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.black,
@@ -181,16 +169,18 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Column(
-                          //_____textBelowlSlider
-                          children: [
-                            Text(
-                              'SRT',
-                              style: TextStyle(
-                                  fontSize: 26, fontWeight: FontWeight.bold),
-                            ),
-                            Text('Dodge'),
-                          ],
+                        const FittedBox(
+                          child: Column(
+                            //_____textBelowlSlider
+                            children: [
+                              Text(
+                                'SRT',
+                                style: TextStyle(
+                                    fontSize: 26, fontWeight: FontWeight.bold),
+                              ),
+                              Text('Dodge'),
+                            ],
+                          ),
                         ),
                         TextButton(
                             onPressed: () {},
@@ -203,7 +193,8 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
                       ],
                     ),
                   ),
-                )
+                ),
+                const SizedBox(height: 15,)
               ],
             ),
             // child: CarouselWithIndicatorDemo(),
@@ -215,24 +206,29 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.blue,
+              color: Colors.blue.shade800,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Available Cars',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      
+                      ),
                     ),
                     // Text(''),
                     SizedBox(height: 2),
                     Text('Long term and short term',
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w100)),
+                          color: Colors.white,
+                          fontSize: 14,
+                        )),
                   ],
                 ),
                 Container(
@@ -245,7 +241,11 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
                   child: Center(
                     child: IconButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => CarProductPage(),));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CarProductPage(),
+                            ));
                       },
                       splashColor: Colors.white,
                       icon: Icon(
@@ -271,7 +271,11 @@ class _CarBuyHometestState extends State<CarBuyHometest> {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => CarProductPage(),));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CarProductPage(),
+                          ));
                     },
                     child: Row(
                       //_____More
