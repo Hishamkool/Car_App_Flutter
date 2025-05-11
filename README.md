@@ -1,5 +1,6 @@
 # 🚘 Car Booking App `UI` 
-<img src="https://github.com/user-attachments/assets/1e8be3d1-0975-4c08-9679-3fd4b989b104" alt="CarAppExpected" height="600"/>
+<img src="https://github.com/user-attachments/assets/1e8be3d1-0975-4c08-9679-3fd4b989b104" alt="CarAppExpected" style="height:500px; width:auto;" />
+
 
 
 A sleek and modern **Car Booking Application** built with Flutter. This project focuses on designing a user-friendly interface for a service where users can book cars with drivers for transportation, travel, or commuting—**not for self-drive rentals**.
