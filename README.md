@@ -1,5 +1,5 @@
 # 🚘 Car Booking App `UI` 
-<img src="https://github.com/user-attachments/assets/1e8be3d1-0975-4c08-9679-3fd4b989b104" alt="CarAppExpected" style="height:500px; width:auto;" />
+<img src="https://github.com/user-attachments/assets/1e8be3d1-0975-4c08-9679-3fd4b989b104" alt="CarAppExpected"  />
 
 
 
