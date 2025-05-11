@@ -1,5 +1,11 @@
-# car_app
-![CarAppExpected](https://github.com/user-attachments/assets/1e8be3d1-0975-4c08-9679-3fd4b989b104)
+# 🚘 Car Booking App `UI` 
+<img src="https://github.com/user-attachments/assets/1e8be3d1-0975-4c08-9679-3fd4b989b104" alt="CarAppExpected" height="600"/>
+
+
+A sleek and modern **Car Booking Application** built with Flutter. This project focuses on designing a user-friendly interface for a service where users can book cars with drivers for transportation, travel, or commuting—**not for self-drive rentals**.
+
+## 📱 Screenshots
+
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
   <img src="https://github.com/user-attachments/assets/07b6dd9d-2e34-46a8-9600-f118da16cb9d" alt="Screenshot_1746901748" width="23%" />
   <img src="https://github.com/user-attachments/assets/b9c72713-0bb2-458d-b90c-ca271132101b" alt="Screenshot 2" style="width: 23%; height: auto;"/>
@@ -8,18 +14,27 @@
 </div>
 
 
+## 🎯 Features
 
-a flutter project to browse cars and shop them
+- ✨ Clean, elegant UI design
+- 🚗 View available cars with booking options
+- 📄 Booking summary/details screen
+- 📱 Fully responsive design
+- 🧩 Modular code architecture
+- ⚡ Fast performance
 
-## Getting Started
+## 🧰 Tech Stack
 
-This project is a starting point for a Flutter application.
+- **Flutter** (v3.x+)
+- **Dart**
+- **Custom widgets** for reusable UI components
 
-A few resources to get you started if this is your first Flutter project:
+## How to Run
+1. Clone this repository.
+2. Install dependencies using `flutter pub get`.
+3. Run the app using `flutter run`.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
